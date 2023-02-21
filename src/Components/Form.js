@@ -10,13 +10,41 @@ function Form() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { name, value } = event.target;
     console.log("envent", event);
   };
 
   const handleOnChange = (events) => {
-    console.log(events);
-    setName(events.target.value);
+    const { name, value } = events.target;
+    console.log("name and value", name, value);
+    // setName(events.target.value);
+
+    switch (name) {
+      case "name": {
+        console.log("name switch case");
+        setName(value);
+        break;
+      }
+      case "email": {
+        console.log("email switch case");
+        setEmail(value);
+        break;
+      }
+      case "password": {
+        setPassword(value);
+        break;
+      }
+      case "age": {
+        setAge(value);
+        break;
+      }
+      case "description": {
+        setDescription(value);
+        break;
+      }
+      default: {
+        return;
+      }
+    }
   };
 
   console.log("states of form ", name, email, password, age, description);
@@ -33,29 +61,43 @@ function Form() {
           onChange={handleOnChange}
           value={name}
         ></input>
-        <br />
-
+        <br /> <br />
         <label>Email : </label>
-        <input type={"email"} name={"email"} placeholder={"Email"}></input>
-        <br />
-
+        <input
+          type={"email"}
+          name={"email"}
+          placeholder={"Email"}
+          onChange={handleOnChange}
+          value={email}
+        ></input>
+        <br /> <br />
         <label>Password :</label>
         <input
           type={"password"}
           name={"password"}
           placeholder={"Password"}
+          onChange={handleOnChange}
+          value={password}
+        ></input>
+        <br /> <br />
+        <label>Age : </label>
+        <input
+          type={"number"}
+          name={"age"}
+          placeholder={"Age"}
+          onChange={handleOnChange}
+          value={age}
         ></input>
         <br />
-
-        <label>Age : </label>
-        <input type={"number"} name={"age"} placeholder={"Age"}></input>
         <br />
-        <br />
-
         <label>Description : </label>
-        <textarea name={"description"} placeholder={"Description"}></textarea>
-        <br />
-
+        <textarea
+          name={"description"}
+          placeholder={"Description"}
+          onChange={handleOnChange}
+          value={description}
+        ></textarea>
+        <br /> <br />
         <button type={"submit"} onClick={handleSubmit}>
           Submit
         </button>
