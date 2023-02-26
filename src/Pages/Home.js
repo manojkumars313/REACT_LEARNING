@@ -14,7 +14,10 @@ export default function Home() {
         <h2>ContactUs</h2>
       </Link>
 
-      <Link to={`/ProductDetails/${32}`}>
+      {/* <Link to={`/ProductDetails/${32}`}>
+        <h2>ProductDetails</h2>
+      </Link> */}
+      <Link to={`/ProductList`}>
         <h2>ProductDetails</h2>
       </Link>
     </div>

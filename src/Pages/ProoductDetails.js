@@ -6,7 +6,7 @@ function ProoductDetails() {
   console.log("params", Params);
   return (
     <div>
-      <h1>ProoductDetails</h1>
+      <h1>Prooduct Details : {Params.productId} </h1>
     </div>
   );
 }

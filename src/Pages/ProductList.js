@@ -1,4 +1,5 @@
 import Product from "./Product";
+import { Link } from "react-router-dom";
 
 const data = [
   {
@@ -33,17 +34,26 @@ const data = [
   },
 ];
 
-const ArrayOfObjects = () => {
+const ProductList = () => {
   return (
     <div key={"1234"}>
       <h1>Product List</h1>
 
       {data.map((item, index) => {
         console.log("item, index", item, index);
-        return <Product productName={item.productName} price={item.cost} />;
+        return (
+          <Link to={`/ProductDetails/${item.id}`}>
+            <Product
+              key={index}
+              productName={item.productName}
+              price={item.cost}
+            />
+            ;
+          </Link>
+        );
       })}
     </div>
   );
 };
 
-export default ArrayOfObjects;
+export default ProductList;
