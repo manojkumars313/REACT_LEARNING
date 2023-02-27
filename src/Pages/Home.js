@@ -20,6 +20,14 @@ export default function Home() {
       <Link to={`/ProductList`}>
         <h2>ProductDetails</h2>
       </Link>
+
+      <Link to={"Cat-List"}>
+        <h2>Cat List</h2>
+      </Link>
+
+      <Link to={"/cat-detials/:catid"}>
+        <h2>Cat Details</h2>
+      </Link>
     </div>
   );
 }
