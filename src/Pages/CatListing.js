@@ -1,38 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { catData } from "../Utility/DummyData";
 import CatCompo from "../Components/CatCompo";
 import { useNavigate } from "react-router-dom";
+import { ApiCaller } from "../Utility/ApiCaller";
 
 function CatListing() {
   const navigate = useNavigate();
 
+  const [catData, setCatData] = useState([]);
+
+  useEffect(() => {
+    ApiCaller({
+      method: "GET",
+      url: "https://api.thecatapi.com/v1/images/search?limit=10",
+    })
+      .then((res) => {
+        console.log("Api res", res);
+        setCatData(res.data);
+      })
+      .catch((err) => {
+        console.log("Api err", err);
+      });
+  });
+
   const handleNavigate = (id, item) => {
     console.log("Parameters", id, item);
-
-    //Push
-    navigate(`/cat-detials/${id}`, {
-      state: { CatDetail: item },
-      replace: true,
-    });
-
-    //replce
-    // navigate(`/cat-detials/${id}`, {
-    //   state: { CatDetail: item },
-    //   replace: true,
-    // });
-
-    //Go Back
-    // navigate(-1);
-
-    //Go Forward
-    navigate(1);
+    navigate(`/cat-detials/${id}`);
   };
   return (
     <div>
+      <h1>Cat List</h1>
       {catData.map((item) => {
         return (
           <div key={item.id} onClick={() => handleNavigate(item.id, item)}>
-            <CatCompo id={item.id} imgUrl={item.url} />
+            <CatCompo id={item.id} imgUrl={item?.url} />
           </div>
         );
       })}
