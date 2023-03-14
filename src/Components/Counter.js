@@ -7,7 +7,7 @@ import {
 
 const Counter = () => {
   const dispatch = useDispatch();
-  const count = useSelector((state) => state.counterReducer.count);
+  const count = useSelector((state) => state.counterReducer.count); // Here don't write whole store becoz anythings update in store it rerenders
 
   return (
     <div style={{ textAlign: "center" }}>
