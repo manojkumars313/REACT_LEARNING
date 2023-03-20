@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Favourite from "./Favourite";
+import { useState } from "react";
 
 function App() {
+  const [show, setShow] = useState(true);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      App is here.....
+      {show ? <Favourite age={23} /> : null}
+      <button onClick={() => setShow(!show)}>change render</button>
     </div>
   );
 }
