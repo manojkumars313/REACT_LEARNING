@@ -1,6 +1,7 @@
 import "./App.css";
-import Favourite from "./Favourite";
+
 import { useState } from "react";
+import Favourite from "./Components/ComponentC";
 
 function App() {
   const [show, setShow] = useState(true);
